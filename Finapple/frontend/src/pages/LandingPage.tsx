@@ -227,7 +227,7 @@ const LandingPage: React.FC = () => {
                 icon: <Shield className="w-8 h-8" />,
                 title: "Bank-Grade Security",
                 description:
-                  "256-bit encryption and multi-factor authentication protect your funds.",
+                  "256-bit encryption with jwt authentication protect your funds.",
                 color: "text-[#149e61]",
                 bgColor: "bg-[rgba(20,158,97,0.16)]",
               },
@@ -243,7 +243,7 @@ const LandingPage: React.FC = () => {
                 icon: <Lock className="w-8 h-8" />,
                 title: "Secure Vault",
                 description:
-                  "Keep your savings safe with our FDIC-insured vault feature.",
+                  "Keep your savings safe with our  vault feature.",
                 color: "text-[#149e61]",
                 bgColor: "bg-[rgba(20,158,97,0.16)]",
               },
@@ -251,7 +251,7 @@ const LandingPage: React.FC = () => {
                 icon: <Globe className="w-8 h-8" />,
                 title: "Global Access",
                 description:
-                  "Use your card worldwide with no foreign transaction fees.",
+                  "Mark and process transactions as international with secure validation rules.",
                 color: "text-[#7132f5]",
                 bgColor: "bg-[rgba(113,50,245,0.16)]",
               },
