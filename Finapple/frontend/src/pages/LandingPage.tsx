@@ -243,7 +243,7 @@ const LandingPage: React.FC = () => {
                 icon: <Lock className="w-8 h-8" />,
                 title: "Secure Vault",
                 description:
-                  "Keep your savings safe with our  vault feature.",
+                  "Keep your document safe with our  vault feature.",
                 color: "text-[#149e61]",
                 bgColor: "bg-[rgba(20,158,97,0.16)]",
               },
