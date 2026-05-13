@@ -62,12 +62,23 @@ const LandingPage: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-4"
         >
-          <button className="text-[#686b82] hover:text-[#101114] transition-colors font-medium">
-            <Link to="/login">Log In</Link>
-          </button>
-          <button className="bg-[#7132f5] text-white px-5 py-2.5 rounded-xl font-medium hover:bg-[#5741d8] transition-colors">
-            <Link to="/signup">Get Started</Link>
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+
+            <Link
+              to="/login"
+              className="text-[#686b82] hover:text-[#101114] transition-colors font-medium"
+            >
+              Log In
+            </Link>
+
+            <Link
+              to="/signup"
+              className="bg-[#7132f5] text-white px-5 py-2.5 rounded-xl font-medium hover:bg-[#5741d8] transition-colors text-center"
+            >
+              Get Started
+            </Link>
+
+          </div>
         </motion.div>
       </nav>
 
