@@ -66,15 +66,16 @@ const LandingPage: React.FC = () => {
             <Link
               to="/login"
               className="
-      text-[#686b82] hover:text-[#101114] 
-      active:text-[#101114]
-      transition-colors 
+      bg-white
+      border-2 border-[#7132f5]
+      text-[#7132f5] hover:text-[#5741d8] 
+      active:bg-[#f5f3ff]
+      transition-all
       font-medium
       px-5 py-3 sm:py-2.5
       text-center sm:text-left
-      rounded-xl sm:rounded-none
-      hover:bg-gray-50 sm:hover:bg-transparent
-      active:bg-gray-100 sm:active:bg-transparent
+      rounded-xl
+      hover:border-[#5741d8] hover:bg-[#faf9ff]
       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7132f5] focus-visible:ring-offset-2
       min-h-[44px] sm:min-h-0
     "
