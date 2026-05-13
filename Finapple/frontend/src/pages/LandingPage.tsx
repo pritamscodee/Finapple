@@ -62,22 +62,44 @@ const LandingPage: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-4"
         >
-          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             <Link
               to="/login"
-              className="text-[#686b82] hover:text-[#101114] transition-colors font-medium"
+              className="
+      text-[#686b82] hover:text-[#101114] 
+      active:text-[#101114]
+      transition-colors 
+      font-medium
+      px-5 py-3 sm:py-2.5
+      text-center sm:text-left
+      rounded-xl sm:rounded-none
+      hover:bg-gray-50 sm:hover:bg-transparent
+      active:bg-gray-100 sm:active:bg-transparent
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7132f5] focus-visible:ring-offset-2
+      min-h-[44px] sm:min-h-0
+    "
             >
               Log In
             </Link>
 
             <Link
               to="/signup"
-              className="bg-[#7132f5] text-white px-5 py-2.5 rounded-xl font-medium hover:bg-[#5741d8] transition-colors text-center"
+              className="
+      bg-[#7132f5] text-white 
+      px-5 py-3 sm:py-2.5 
+      rounded-xl 
+      font-medium 
+      hover:bg-[#5741d8] 
+      active:bg-[#4829c0]
+      transition-all
+      text-center
+      shadow-sm hover:shadow-md
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7132f5] focus-visible:ring-offset-2
+      min-h-[44px] sm:min-h-0
+    "
             >
               Get Started
             </Link>
-
           </div>
         </motion.div>
       </nav>
