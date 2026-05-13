@@ -15,7 +15,7 @@ import {
   Building2,
 } from "lucide-react";
 import { useAuthStore } from "../Store/authStore";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface SignupProps {
   onSwitchToLogin?: () => void;
@@ -33,7 +33,7 @@ const Signup: React.FC<SignupProps> = ({ onSwitchToLogin }) => {
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
-  const { register, message, isAuthenticated } = useAuthStore();
+  const { register } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
