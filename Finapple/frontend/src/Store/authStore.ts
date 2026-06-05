@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import axios from "axios";
-
-const BASE_URL = "http://localhost:3000";
+import { api } from "@/api/api";
 
 export type User = {
   id: string;
@@ -22,11 +20,6 @@ type AuthStore = {
   restoreSession: () => Promise<void>;
 };
 
-const authAxios = axios.create({
-  baseURL: BASE_URL,
-  withCredentials: true,
-});
-
 export const useAuthStore = create<AuthStore>()(
   persist(
     (set, get) => ({
@@ -36,7 +29,7 @@ export const useAuthStore = create<AuthStore>()(
 
       login: async (email, password) => {
         try {
-          const res = await authAxios.post("/auth/login", { email, password });
+          const res = await api.post("/auth/login", { email, password });
           const token = res.data.token;
           set({ user: res.data.user, isAuthenticated: true, token });
           return res.data.message as string;
@@ -53,7 +46,7 @@ export const useAuthStore = create<AuthStore>()(
 
       register: async (name, email, password) => {
         try {
-          const res = await authAxios.post("/auth/register", {
+          const res = await api.post("/auth/register", {
             name,
             email,
             password,
@@ -71,7 +64,7 @@ export const useAuthStore = create<AuthStore>()(
       logout: async () => {
         try {
           const token = get().token;
-          await authAxios.post(
+          await api.post(
             "/auth/logout",
             {},
             {
@@ -86,7 +79,7 @@ export const useAuthStore = create<AuthStore>()(
         const token = get().token;
         if (!token) return;
         try {
-          const res = await authAxios.get("/auth/me", {
+          const res = await api.get("/auth/me", {
             headers: { Authorization: `Bearer ${token}` },
           });
           set({ user: res.data, isAuthenticated: true });
