@@ -9,8 +9,8 @@ async function bootstrap() {
 
   // Allow comma-separated origins from env, e.g.
   // CORS_ORIGIN=https://finapple.netlify.app,https://finapple.vercel.app
-  const rawOrigins = process.env.CORS_ORIGIN || 'https://finnappl.netlify.app/';
-  const allowedOrigins = rawOrigins.split(',').map((o) => o.trim());
+  const rawOrigins = process.env.CORS_ORIGIN || 'https://finnappl.netlify.app';
+  const allowedOrigins = rawOrigins.split(',').map((o: string) => o.trim().replace(/\/$/, ''));
 
   app.enableCors({
     origin: (origin, callback) => {
