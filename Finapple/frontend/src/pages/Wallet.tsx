@@ -77,7 +77,7 @@ function ActionModal({
     setLoading(true);
     try {
       let msg = "";
-      if (type === "deposit") msg = await deposit(amt, description, category);
+      if (type === "deposit") msg = await deposit(amt, description);
       else if (type === "withdraw") msg = await withdraw(amt, description, category);
       else msg = await transfer(recipientEmail, amt, description);
       toast.success(msg);
