@@ -323,7 +323,7 @@ function Analytics() {
                     tickFormatter={(v) => `₹${v}`}
                   />
                   <Tooltip
-                    formatter={(v: number) => fmt(v)}
+                    formatter={(v: unknown) => fmt(Number(v))}
                     contentStyle={{
                       borderRadius: "10px",
                       border: "1px solid #dedee5",
@@ -405,7 +405,7 @@ function Analytics() {
                       ))}
                     </Pie>
                     <Tooltip
-                      formatter={(v: number) => fmt(v)}
+                      formatter={(v: unknown) => fmt(Number(v))}
                       contentStyle={{
                         borderRadius: "10px",
                         border: "1px solid #dedee5",
@@ -555,7 +555,7 @@ function Analytics() {
                 tickFormatter={(v) => `₹${v}`}
               />
               <Tooltip
-                formatter={(v: number) => fmt(v)}
+                formatter={(v: unknown) => fmt(Number(v))}
                 contentStyle={{
                   borderRadius: "10px",
                   border: "1px solid #dedee5",
