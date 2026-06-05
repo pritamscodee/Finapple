@@ -1,8 +1,21 @@
 import { AppSidebar } from "@/components/sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+
+const pageTitles: Record<string, string> = {
+  "/layout": "Dashboard",
+  "/layout/wallet": "Wallet",
+  "/layout/analytics": "Analytics",
+  "/layout/budget": "Budget Manager",
+  "/layout/savings": "Savings Goals",
+  "/layout/vault": "Vault",
+  "/layout/settings": "Settings",
+};
 
 function Layout() {
+  const location = useLocation();
+  const title = pageTitles[location.pathname] ?? "Finapple";
+
   return (
     <SidebarProvider>
       <div
@@ -22,7 +35,6 @@ function Layout() {
             minWidth: 0,
           }}
         >
-          {/* Top bar */}
           <header
             style={{
               height: "56px",
@@ -33,6 +45,7 @@ function Layout() {
               padding: "0 24px",
               gap: "12px",
               boxShadow: "rgba(16,24,40,0.04) 0px 1px 4px",
+              flexShrink: 0,
             }}
           >
             <SidebarTrigger style={{ color: "#686b82" }} />
@@ -50,7 +63,7 @@ function Layout() {
                 fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
               }}
             >
-              Finapple
+              {title}
             </span>
           </header>
 

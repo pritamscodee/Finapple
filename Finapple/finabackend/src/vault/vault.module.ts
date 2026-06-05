@@ -7,6 +7,6 @@ import { JwtService } from '@nestjs/jwt';
 @Module({
   imports: [CloudinaryModule],
   controllers: [VaultController],
-  providers: [VaultService,JwtService],
+  providers: [VaultService, JwtService],
 })
 export class VaultModule {}

@@ -8,6 +8,13 @@ import LandingPage from "./pages/LandingPage";
 import Signup from "./components/Signup";
 import Layout from "./pages/Layout";
 import Vault from "./pages/Vault";
+import Dashboard from "./pages/Dashboard";
+import Settings from "./pages/Settings";
+import WalletPage from "./pages/Wallet";
+import Analytics from "./pages/Analytics";
+import Budget from "./pages/Budget";
+import Savings from "./pages/Savings";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -15,8 +22,20 @@ const router = createBrowserRouter([
   { path: "/signup", element: <Signup /> },
   {
     path: "/layout",
-    element: <Layout />,
-    children: [{ path: "vault", element: <Vault /> }],
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "wallet", element: <WalletPage /> },
+      { path: "analytics", element: <Analytics /> },
+      { path: "budget", element: <Budget /> },
+      { path: "savings", element: <Savings /> },
+      { path: "vault", element: <Vault /> },
+      { path: "settings", element: <Settings /> },
+    ],
   },
 ]);
 

@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Global()
 @Module({
-  providers: [DbProvider,ConfigService],
+  providers: [DbProvider, ConfigService],
   exports: [DbProvider],
 })
 export class DbModule {}

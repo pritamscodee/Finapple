@@ -7,17 +7,40 @@ import {
   SidebarMenuItem,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import { Vault, LayoutDashboard, Settings, LogOut } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import {
+  Vault,
+  LayoutDashboard,
+  Settings,
+  LogOut,
+  Wallet,
+  BarChart2,
+  PiggyBank,
+  Target,
+} from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/Store/authStore";
+import { toast } from "sonner";
 
 const items = [
   { title: "Dashboard", url: "/layout", icon: LayoutDashboard },
+  { title: "Wallet", url: "/layout/wallet", icon: Wallet },
+  { title: "Analytics", url: "/layout/analytics", icon: BarChart2 },
+  { title: "Budget", url: "/layout/budget", icon: PiggyBank },
+  { title: "Savings", url: "/layout/savings", icon: Target },
   { title: "Vault", url: "/layout/vault", icon: Vault },
   { title: "Settings", url: "/layout/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuthStore();
+
+  const handleLogout = async () => {
+    await logout();
+    toast("Logged out successfully");
+    navigate("/");
+  };
 
   return (
     <Sidebar
@@ -71,7 +94,7 @@ export function AppSidebar() {
                 fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
               }}
             >
-              Personal Finance
+              Secure Platform
             </p>
           </div>
         </div>
@@ -134,6 +157,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <button
+                onClick={handleLogout}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -147,6 +171,16 @@ export function AppSidebar() {
                   fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
                   cursor: "pointer",
                   width: "100%",
+                  transition: "background 0.15s, color 0.15s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor =
+                    "rgba(239,68,68,0.08)";
+                  e.currentTarget.style.color = "#ef4444";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.color = "#686b82";
                 }}
               >
                 <LogOut size={18} />

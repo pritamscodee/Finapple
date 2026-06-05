@@ -8,7 +8,7 @@ async function bootstrap() {
   app.use(cookieParser());
 
   app.enableCors({
-    origin: "https://finnappl.netlify.app" ,
+    origin: 'http://localhost:5173',
     credentials: true,
   });
   await app.listen(process.env.PORT || 3000);

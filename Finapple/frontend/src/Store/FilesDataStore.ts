@@ -11,20 +11,50 @@ export type FileItem = {
   page: number | null;
 };
 
-type FileStore = {
-  files: FileItem[];
-  GetFiles: () => Promise<number>;
+export type AnalysisResult = {
+  fileId: number;
+  fileName: string;
+  fileType: string;
+  documentType: string;
+  summary: string;
+  entities: string[];
+  dates: string[];
+  amounts: string[];
+  keyTerms: string[];
+  riskFlags: string[];
+  confidence: number;
+  analyzedAt: string;
 };
 
-export const usefileStore = create<FileStore>((set) => ({
+type FileStore = {
+  files: FileItem[];
+  loading: boolean;
+  GetFiles: () => Promise<void>;
+  DeleteFile: (publicId: string) => Promise<void>;
+  AnalyzeFile: (fileId: number) => Promise<AnalysisResult>;
+};
+
+export const usefileStore = create<FileStore>((set, get) => ({
   files: [],
+  loading: false,
 
   GetFiles: async () => {
-    const res = await api.get("/vault/get");
+    set({ loading: true });
+    try {
+      const res = await api.get("/vault/get");
+      set({ files: Array.isArray(res.data) ? res.data : [] });
+    } finally {
+      set({ loading: false });
+    }
+  },
 
-    console.log("GetFiles response:", res.data);
-    const data = Array.isArray(res.data) ? res.data : [];
-    set({ files: data });
-    return res.status;
+  DeleteFile: async (publicId: string) => {
+    await api.delete(`/vault/del/${publicId}`);
+    set({ files: get().files.filter((f) => f.publicId !== publicId) });
+  },
+
+  AnalyzeFile: async (fileId: number) => {
+    const res = await api.get(`/analysis/${fileId}`);
+    return res.data as AnalysisResult;
   },
 }));
